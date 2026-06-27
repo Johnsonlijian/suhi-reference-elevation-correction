@@ -12,8 +12,7 @@ data/
   source_data.xlsx                        # source data for manuscript figures
 code/
   fig1_lead.py              # final two-panel lead ranking-artifact figure
-  r207_f1.py                # earlier global-bias figure route
-  r207_fig5.py              # rural pixel gradient figure
+  r207_clean_figures.py     # final Figures 3--5 from source_data.xlsx
   r207_ga.py                # graphical abstract
   r207_mechanism.py         # mechanism schematic
   r207_rerank.py            # ranking-artifact analysis
@@ -39,7 +38,7 @@ Raw input products are public and are not redistributed here: GHSL GHS-SMOD/GHS-
 
 ## Reproducibility
 
-Python 3.11 with numpy, pandas, statsmodels, rasterio, scipy, and matplotlib is expected. Scripts in `code/` reproduce the analyses and figures from the public inputs and derived tables.
+Python 3.11 with numpy, pandas, statsmodels, scipy, matplotlib, and openpyxl is expected. Scripts in `code/` reproduce the analyses and figures from the public inputs and derived tables. `r207_clean_figures.py` uses Cartopy when available for coastlines and otherwise falls back to a plain lon/lat map.
 
 ## License
 

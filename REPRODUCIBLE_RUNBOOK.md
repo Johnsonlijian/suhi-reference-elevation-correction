@@ -21,10 +21,13 @@ Raw third-party datasets are not redistributed. See `DATASETS_AND_LINKS.csv`.
 
 ## Quick Check From Released Data
 
-Regenerate the final lead ranking-artifact figure from the released per-city table:
+Regenerate the final submission figures from the released per-city table and source-data workbook:
 
 ```bash
 python code/fig1_lead.py
+python code/r207_mechanism.py
+python code/r207_clean_figures.py
+python code/r207_ga.py
 ```
 
 Outputs are written to `figures/`.
@@ -50,11 +53,10 @@ python code/r207_spatial.py
 python code/r207_uq.py
 ```
 
-For the coastline map script, set `SUHI_COASTLINE_FILE` to a local Natural Earth or equivalent coastline vector file if `raw_inputs/coast.zip` is not present.
-
 ## Expected Core Checks
 
 - `fig1_lead.py` reports top-100 conventional mean approximately 8.3 C, elevation-matched mean approximately 2.2 C, Spearman rho approximately 0.68, and terrain share approximately 98%.
+- `r207_clean_figures.py` rebuilds Figures 3--5 without in-map region labels or in-plot explanatory text; Cartopy coastlines are optional.
 - `r207_sensitivity.py` reports the conventional slope near +0.499 C per 100 m and elevation-matched slopes near zero.
 - `r207_uq.py` updates the derived table with correction uncertainty and trust flags.
 

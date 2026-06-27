@@ -1,14 +1,21 @@
 # -*- coding: utf-8 -*-
-import os, numpy as np, pandas as pd, matplotlib as mpl
 from pathlib import Path
+
+import numpy as np, pandas as pd, matplotlib as mpl
 mpl.use('Agg'); import matplotlib.pyplot as plt
-from matplotlib.lines import Line2D
 from matplotlib.cm import ScalarMappable
 from matplotlib.colors import Normalize
-ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / 'figures'
+HERE = Path(__file__).resolve().parent
+if (HERE / 'per_city_reference_elevation_bias.csv').exists():
+    ROOT = HERE
+    OUT = ROOT / 'figs'
+    DATA = ROOT / 'per_city_reference_elevation_bias.csv'
+else:
+    ROOT = HERE.parent
+    OUT = ROOT / 'figures'
+    DATA = ROOT / 'data' / 'per_city_reference_elevation_bias.csv'
 OUT.mkdir(exist_ok=True)
-d=pd.read_csv(ROOT / 'data' / 'per_city_reference_elevation_bias.csv')
+d=pd.read_csv(DATA)
 d=d.dropna(subset=['conventional_SUHI_C','elevation_matched_SUHI_C','reference_elevation_surplus_m']).copy()
 # QA: drop implausible extremes (match manuscript pool)
 d=d[(d['conventional_SUHI_C'].between(-8,15))&(d['elevation_matched_SUHI_C'].between(-8,15))]
@@ -33,13 +40,6 @@ ax.scatter(top['conventional_SUHI_C'],top['elevation_matched_SUHI_C'],s=34,c=HOT
 ax.set_xlim(lim); ax.set_ylim(lim); ax.set_aspect('equal')
 ax.set_xlabel('Conventional SUHI (°C)'); ax.set_ylabel('Elevation-matched SUHI (°C)')
 ax.set_title('a  The most intense SUHIs sit far below the 1:1 line',loc='left',fontsize=10)
-ax.text(0.03,0.97,f'100 most-intense (conventional):\n97/100 displaced after correction\n{terr:.0f}% terrain-structured (vs 20% baseline)\nSpearman ρ = {rho:.2f}',
-        transform=ax.transAxes,va='top',ha='left',fontsize=8,
-        bbox=dict(boxstyle='round,pad=0.45',fc='white',ec='#d0d0d0',lw=0.8))
-ax.legend(handles=[Line2D([],[],ls='--',color='#9aa0a6',label='1:1 (no change)'),
-                   Line2D([],[],marker='o',ls='',mfc=HOT,mec='k',mew=0.3,ms=7,label='100 most-intense (conv.)'),
-                   Line2D([],[],marker='o',ls='',mfc=CLOUD,mec='none',ms=6,label='all cities')],
-          loc='lower right',frameon=False,fontsize=8)
 for s in ('top','right'): ax.spines[s].set_visible(False)
 
 # ---- (b) collapse / slope ----
@@ -49,8 +49,6 @@ for _,r in top.iterrows():
     ax.plot([0,1],[r['conventional_SUHI_C'],r['elevation_matched_SUHI_C']],color=cmap(norm(min(r['surplus_km'],2.2))),lw=0.7,alpha=0.6,zorder=2)
 ax.plot([0,1],[mc,mm],color='#111',lw=3.2,zorder=5,solid_capstyle='round')
 ax.scatter([0,1],[mc,mm],color='#111',s=46,zorder=6)
-ax.annotate(f'mean {mc:.1f} → {mm:.1f} °C',xy=(0.5,(mc+mm)/2),xytext=(0.5,(mc+mm)/2+1.6),ha='center',fontsize=9.5,
-            arrowprops=dict(arrowstyle='-',color='#111',lw=0.8))
 ax.set_xlim(-0.28,1.28); ax.set_xticks([0,1]); ax.set_xticklabels(['Conventional\nreference','Elevation-\nmatched'],fontsize=9)
 ax.set_ylabel('SUHI of the 100 most-intense cities (°C)')
 ax.set_title('b  …and collapse once the reference elevation is matched',loc='left',fontsize=10)
