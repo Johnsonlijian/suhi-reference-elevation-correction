@@ -32,7 +32,7 @@ ax.scatter(d['conventional_SUHI_C'],d['elevation_matched_SUHI_C'],s=5,c=CLOUD,al
 ax.scatter(top['conventional_SUHI_C'],top['elevation_matched_SUHI_C'],s=34,c=HOT,edgecolor='k',lw=0.3,zorder=4)
 ax.set_xlim(lim); ax.set_ylim(lim); ax.set_aspect('equal')
 ax.set_xlabel('Conventional SUHI (°C)'); ax.set_ylabel('Elevation-matched SUHI (°C)')
-ax.set_title('a  The most intense SUHIs sit far below the 1:1 line',loc='left',fontweight='bold',fontsize=10)
+ax.set_title('a  The most intense SUHIs sit far below the 1:1 line',loc='left',fontsize=10)
 ax.text(0.03,0.97,f'100 most-intense (conventional):\n97/100 displaced after correction\n{terr:.0f}% terrain-structured (vs 20% baseline)\nSpearman ρ = {rho:.2f}',
         transform=ax.transAxes,va='top',ha='left',fontsize=8,
         bbox=dict(boxstyle='round,pad=0.45',fc='white',ec='#d0d0d0',lw=0.8))
@@ -49,11 +49,11 @@ for _,r in top.iterrows():
     ax.plot([0,1],[r['conventional_SUHI_C'],r['elevation_matched_SUHI_C']],color=cmap(norm(min(r['surplus_km'],2.2))),lw=0.7,alpha=0.6,zorder=2)
 ax.plot([0,1],[mc,mm],color='#111',lw=3.2,zorder=5,solid_capstyle='round')
 ax.scatter([0,1],[mc,mm],color='#111',s=46,zorder=6)
-ax.annotate(f'mean {mc:.1f} → {mm:.1f} °C',xy=(0.5,(mc+mm)/2),xytext=(0.5,(mc+mm)/2+1.6),ha='center',fontsize=9.5,fontweight='bold',
+ax.annotate(f'mean {mc:.1f} → {mm:.1f} °C',xy=(0.5,(mc+mm)/2),xytext=(0.5,(mc+mm)/2+1.6),ha='center',fontsize=9.5,
             arrowprops=dict(arrowstyle='-',color='#111',lw=0.8))
 ax.set_xlim(-0.28,1.28); ax.set_xticks([0,1]); ax.set_xticklabels(['Conventional\nreference','Elevation-\nmatched'],fontsize=9)
 ax.set_ylabel('SUHI of the 100 most-intense cities (°C)')
-ax.set_title('b  …and collapse once the reference elevation is matched',loc='left',fontweight='bold',fontsize=10)
+ax.set_title('b  …and collapse once the reference elevation is matched',loc='left',fontsize=10)
 ax.set_ylim(-1,13.5)
 for s in ('top','right'): ax.spines[s].set_visible(False)
 sm=ScalarMappable(norm=norm,cmap=cmap); sm.set_array([])
