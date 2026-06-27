@@ -14,9 +14,9 @@ a=a.dropna(subset=['original_SUHI_warm','elev100_rural50_SUHI_warm'])
 a=a[a['original_SUHI_warm'].between(-8,15)&a['elev100_rural50_SUHI_warm'].between(-8,15)].copy()
 a['adz']=(a['rural_ref_minus_urban_elev_m'].abs()/1000).clip(0,2); a=a.sort_values('adz')
 mpl.rcParams.update({'font.family':'DejaVu Sans','font.size':10,'pdf.fonttype':42,'ps.fonttype':42})
-fig=plt.figure(figsize=(7.5,4.0)); 
+fig=plt.figure(figsize=(7.5,4.0), facecolor='white'); 
 fig.text(0.5,0.95,"The world's most intense surface heat islands are largely a reference-elevation artifact",
-         ha='center',fontsize=11.5,fontweight='bold')
+         ha='center',fontsize=11.5)
 ax=fig.add_axes([0.10,0.13,0.55,0.70])
 sc=ax.scatter(a['original_SUHI_warm'],a['elev100_rural50_SUHI_warm'],c=a['adz'],cmap='plasma',s=4,lw=0,alpha=0.7)
 ax.plot([-6,14],[-6,14],'--',color='#333',lw=1)
@@ -30,12 +30,20 @@ for s in ('top','right'): ax.spines[s].set_visible(False)
 axr=fig.add_axes([0.71,0.13,0.27,0.70]); axr.axis('off')
 axr.text(0.0,0.92,'11,453 cities · MODIS LST',fontsize=8.5,color='#555',transform=axr.transAxes)
 axr.barh([2,1],[8.3,2.2],color=['#C0392B','#16A085'],height=0.55)
-axr.text(8.3,2,' 8.3 °C',va='center',fontsize=9,color='#C0392B',fontweight='bold')
-axr.text(2.2,1,' 2.2 °C',va='center',fontsize=9,color='#16A085',fontweight='bold')
+axr.text(8.3,2,' 8.3 °C',va='center',fontsize=9,color='#C0392B')
+axr.text(2.2,1,' 2.2 °C',va='center',fontsize=9,color='#16A085')
 axr.set_xlim(0,11); axr.set_ylim(0.3,2.8)
-axr.text(0.0,0.62,'Top-100 "worst SUHI" cities:',transform=axr.transAxes,fontsize=8.5,fontweight='bold')
+axr.text(0.0,0.62,'Top-100 "worst SUHI" cities:',transform=axr.transAxes,fontsize=8.5)
 axr.text(0.0,0.30,'conventional ref',transform=axr.transAxes,fontsize=8,color='#C0392B')
 axr.text(0.0,0.18,'elevation-matched ref',transform=axr.transAxes,fontsize=8,color='#16A085')
 axr.text(0.0,0.02,'97/100 displaced · 98% terrain\n(vs 20% baseline) · ρ = 0.68',transform=axr.transAxes,fontsize=8,color='#333')
-for ext in ('png','pdf','svg'): fig.savefig(os.path.join(OUT,f'Graphical_Abstract.{ext}'),dpi=300,bbox_inches='tight')
+for ext in ('png','pdf','svg'):
+    fig.savefig(
+        OUT/f'Graphical_Abstract.{ext}',
+        dpi=300,
+        bbox_inches='tight',
+        facecolor='white',
+        edgecolor='white',
+        transparent=False,
+    )
 plt.close(fig); print('graphical abstract written')
