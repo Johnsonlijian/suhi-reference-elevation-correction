@@ -24,7 +24,7 @@ top=a.nlargest(100,'original_SUHI_warm')
 ax.scatter(top['original_SUHI_warm'],top['elev100_rural50_SUHI_warm'],facecolors='none',edgecolors='#16A085',s=26,lw=0.9,zorder=5,label='100 most-intense (conventional)')
 ax.set_xlim(lim); ax.set_ylim(lim); ax.set_aspect('equal')
 ax.set_xlabel('Conventional SUHI (°C)'); ax.set_ylabel('Elevation-matched SUHI (°C)')
-ax.set_title('The most intense SUHIs collapse after correction',loc='left',fontweight='bold',fontsize=10)
+ax.set_title('The most intense SUHIs collapse after correction',loc='left',fontsize=10)
 cb=fig.colorbar(sc,ax=ax,fraction=0.046,pad=0.02,extend='max'); cb.set_label('|reference-elevation surplus| (km)',fontsize=8)
 ax.text(0.03,0.95,'Top-100 most-intense: 98% terrain (vs 20% baseline)\nmean 8.3 → 2.2 °C; 97/100 displaced; Spearman ρ = 0.68',
         transform=ax.transAxes,va='top',fontsize=8,bbox=dict(fc='white',ec='#ccc',alpha=0.85,pad=3))
