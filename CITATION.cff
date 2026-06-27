@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this dataset or code, please cite the accompanying paper and this deposit."
+title: "Global per-city reference-elevation correction for satellite urban heat-island estimates"
+abstract: "Per-city quantification and correction of the reference-elevation bias in satellite surface urban heat-island (SUHI) estimates across 11,452 global cities, with analysis code."
+type: dataset
+authors:
+  - family-names: REN
+    given-names: Lijian
+    orcid: "https://orcid.org/0000-0003-1629-4368"
+    affiliation: "Inner Mongolia University of Technology, Hohhot, China"
+    email: renlijian@imut.edu.cn
+license: CC-BY-4.0
+keywords:
+  - surface urban heat island
+  - rural reference
+  - elevation bias
+  - land surface temperature
+  - MODIS
+version: "1.0.0"
+date-released: "2026-06-27"

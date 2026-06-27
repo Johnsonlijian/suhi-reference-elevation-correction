@@ -1,0 +1,7 @@
+dataset,source,access_or_doi,license_or_terms,redistributed_here,use_in_release
+GHSL GHS-SMOD and GHS-POP,European Commission Joint Research Centre,https://ghsl.jrc.ec.europa.eu/,See provider terms,No,Urban-centre definitions and population context
+MODIS MOD11A2 LST via OpenLandMap,OpenLandMap/Zenodo,https://zenodo.org/records/6458406,See provider terms,No,Land-surface temperature inputs
+GMTED2010,USGS,https://www.usgs.gov/coastal-changes-and-impacts/gmted2010,Public-domain USGS product,No,Urban-core and reference elevation
+Copernicus GLO-30 DSM,Copernicus DEM / ESA,https://dataspace.copernicus.eu/explore-data/data-collections/copernicus-contributing-missions/collections-description/COP-DEM,See provider terms,No,Independent elevation robustness check
+Yang et al. 2024 global UHII dataset,Figshare,https://doi.org/10.6084/m9.figshare.24821538.v3,CC BY 4.0,No,External validation against published global inventory
+Derived per-city correction table,This repository,data/per_city_reference_elevation_bias.csv,CC BY 4.0,Yes,Released derived product for reuse
