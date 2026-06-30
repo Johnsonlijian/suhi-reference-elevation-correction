@@ -28,25 +28,12 @@ figures/
   Figure6_chelsa_independent_attenuation.{pdf,png,svg}
   Graphical_Abstract.{pdf,png,svg}
 code/
-<<<<<<< HEAD
-  fig1_lead.py              # final two-panel lead ranking-artifact figure
-  r207_clean_figures.py     # final Figures 3--5 from source_data.xlsx
-  r207_ga.py                # graphical abstract
-  r207_mechanism.py         # mechanism schematic
-  r207_rerank.py            # ranking-artifact analysis
-  r207_rerank2.py           # ranking-artifact robustness
-  r207_sensitivity.py       # reference-definition sensitivity and lapse comparison
-  r207_sourcedata.py        # source-data workbook
-  r207_spatial.py           # spatial clustering checks
-  r207_uq.py                # per-city uncertainty and trust flag
-=======
-  rebuild_figs_v2.py
-  fig2_ga.py
-  fig3_polish.py
-  fig45.py
-  r213_fig_chelsa.py
+  rebuild_figs_v2.py        # Figure 1, ranking-artifact lead figure
+  fig2_ga.py                # Figure 2 and graphical abstract
+  fig3_polish.py            # Figure 3, global bias map
+  fig45.py                  # Figures 4--5
+  r213_fig_chelsa.py        # Figure 6, CHELSA attenuation check
   r207_*.py and r211-r216 analysis scripts
->>>>>>> a484a54 (Prepare v1.0.3 Urban Climate release package)
 DATA_DICTIONARY.md
 DATASETS_AND_LINKS.csv
 REPRODUCIBLE_RUNBOOK.md
@@ -66,9 +53,6 @@ Raw input products are public and are not redistributed here. They include GHSL 
 
 ## Reproducibility
 
-<<<<<<< HEAD
-Python 3.11 with numpy, pandas, statsmodels, scipy, matplotlib, and openpyxl is expected. Scripts in `code/` reproduce the analyses and figures from the public inputs and derived tables. `r207_clean_figures.py` uses Cartopy when available for coastlines and otherwise falls back to a plain lon/lat map.
-=======
 Recommended environment: Python 3.11 with numpy, pandas, statsmodels, scipy, matplotlib, geopandas, rasterio, pyproj, openpyxl, and torch for optional GPU bootstraps.
 
 The five active figure generators are self-contained against the released `data/` directory and write to `figures/`:
@@ -82,7 +66,6 @@ python code/r213_fig_chelsa.py
 ```
 
 Raw-data analysis scripts that cannot be run from the released derived tables use explicit environment variables rather than local machine paths. See `REPRODUCIBLE_RUNBOOK.md`.
->>>>>>> a484a54 (Prepare v1.0.3 Urban Climate release package)
 
 ## License
 

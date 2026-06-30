@@ -10,24 +10,16 @@ pip install -r requirements.txt
 
 ## Rebuild Submission Figures From Released Derived Data
 
-<<<<<<< HEAD
 The repository includes:
 
 - `data/per_city_reference_elevation_bias.csv`: released per-city correction table.
 - `data/source_data.xlsx`: figure/source-data workbook.
+- `data/r212_chelsa_vs_modis_lapse.csv`: independent CHELSA attenuation source data for Figure 6.
 
 Raw third-party datasets are not redistributed. See `DATASETS_AND_LINKS.csv`.
 
 ## Quick Check From Released Data
 
-Regenerate the final submission figures from the released per-city table and source-data workbook:
-
-```bash
-python code/fig1_lead.py
-python code/r207_mechanism.py
-python code/r207_clean_figures.py
-python code/r207_ga.py
-=======
 Run from the repository root:
 
 ```bash
@@ -36,7 +28,6 @@ python code/fig2_ga.py
 python code/fig3_polish.py
 python code/fig45.py
 python code/r213_fig_chelsa.py
->>>>>>> a484a54 (Prepare v1.0.3 Urban Climate release package)
 ```
 
 Expected outputs:
@@ -87,16 +78,14 @@ python code/r216_theorem_percity.py
 python code/seb_lapse_model.py
 ```
 
-<<<<<<< HEAD
 ## Expected Core Checks
 
-- `fig1_lead.py` reports top-100 conventional mean approximately 8.3 C, elevation-matched mean approximately 2.2 C, Spearman rho approximately 0.68, and terrain share approximately 98%.
-- `r207_clean_figures.py` rebuilds Figures 3--5 without in-map region labels or in-plot explanatory text; Cartopy coastlines are optional.
+- `rebuild_figs_v2.py` reports top-100 conventional mean approximately 8.3 C, elevation-matched mean approximately 2.2 C, Spearman rho approximately 0.68, and terrain share approximately 98%.
+- The active figure scripts rebuild Figures 1--6 and the graphical abstract without in-map region labels or in-plot explanatory text.
 - `r207_sensitivity.py` reports the conventional slope near +0.499 C per 100 m and elevation-matched slopes near zero.
 - `r207_uq.py` updates the derived table with correction uncertainty and trust flags.
-=======
+
 Outputs from optional raw-data scripts are written under `derived/`.
->>>>>>> a484a54 (Prepare v1.0.3 Urban Climate release package)
 
 ## Public/Private Boundary
 
