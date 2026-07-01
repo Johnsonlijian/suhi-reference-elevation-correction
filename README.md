@@ -4,7 +4,7 @@ Data and code accompanying:
 
 REN, L. A global correction for reference-elevation bias in conventional satellite surface urban heat-island rankings.
 
-Version: 1.0.5
+Version: 1.0.6
 
 ## Purpose
 
@@ -78,4 +78,4 @@ See `LICENSE.txt`.
 
 ## Citation
 
-See `CITATION.cff`. Please cite both the accompanying paper and the archived release DOI: https://doi.org/10.5281/zenodo.21063993.
+See `CITATION.cff`. Please cite both the accompanying paper and the archived Zenodo concept DOI: https://doi.org/10.5281/zenodo.21063992.
