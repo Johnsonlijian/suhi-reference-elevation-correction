@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-R212  Independent cross-validation of the SEB attenuation factor f with CHELSA v2.1.
+R212  Independent CHELSA v2.1 air-temperature lapse benchmark for the SEB attenuation factor f.
 
 Idea
 ----

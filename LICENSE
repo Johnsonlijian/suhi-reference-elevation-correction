@@ -23,5 +23,6 @@ CODE (files in code/): MIT License.
   IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR
   THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-Third-party input data (GHSL, MODIS/OpenLandMap, GMTED2010, Copernicus DEM, Yang et al. 2024) remain under
-their respective original licenses and are not redistributed here.
+Large third-party input data (GHSL, MODIS/OpenLandMap, GMTED2010, Copernicus DEM, CHELSA, Yang et al. 2024)
+remain under their respective original licenses and are not redistributed here. The bundled `data/coast.zip`
+Natural Earth 110 m coastline geometry is public domain and is redistributed only to make Figure 3 reproducible.

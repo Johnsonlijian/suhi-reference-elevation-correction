@@ -2,13 +2,13 @@
 
 Data and code accompanying:
 
-REN, L. Reference-elevation mismatch biases satellite urban heat-island rankings: a within-city correction across 11,452 cities.
+REN, L. A global correction for reference-elevation bias in conventional satellite surface urban heat-island rankings.
 
-Version: 1.0.3
+Version: 1.0.5
 
 ## Purpose
 
-In terrain-structured cities, the rural reference used to compute satellite surface urban heat-island intensity (SUHI = urban minus rural land-surface temperature) can sit at a different elevation from the urban core. Because land-surface temperature declines with elevation, this mismatch can bias conventional SUHI values. This release provides a global per-city quantification of that bias and a ready-to-use correction.
+In terrain-structured cities, the rural reference used to compute satellite surface urban heat-island intensity (SUHI = urban minus rural land-surface temperature) can sit at a different elevation from the urban core. Because land-surface temperature declines with elevation, this mismatch can bias conventional SUHI values. This release provides a global per-city quantification of that bias for the conventional-reference implementation tested in the paper, together with matching-definition sensitivity and trust flags.
 
 ## Contents
 
@@ -17,6 +17,9 @@ data/
   per_city_reference_elevation_bias.csv
   source_data.xlsx
   coast.zip
+  fig4_slope_sensitivity.csv
+  fig5_gradient_summary.csv
+  outlier_audit.csv
   r173_reference_pixel_lapse_models.csv
   r212_chelsa_vs_modis_lapse.csv
 figures/
@@ -45,15 +48,15 @@ LICENSE.txt
 
 `data/per_city_reference_elevation_bias.csv` contains one row per usable city and the columns documented in `DATA_DICTIONARY.md`.
 
-To correct a conventional SUHI estimate, subtract `reference_elevation_bias_C`, equivalent to using `elevation_matched_SUHI_C`.
+For the released conventional-reference implementation, subtract `reference_elevation_bias_C` to obtain `elevation_matched_SUHI_C`. Applying this correction to another SUHI product requires checking that the rural-reference definition, season/window, sensor/product, and QA filtering are compatible.
 
 ## Public Data Sources
 
-Raw input products are public and are not redistributed here. They include GHSL GHS-SMOD/GHS-POP, MODIS MOD11A2 land-surface temperature via OpenLandMap, GMTED2010, Copernicus GLO-30 DSM, CHELSA v2.1, and Yang et al. (2024) global UHII data for external validation.
+Large raw input products are public and are not redistributed here. They include GHSL GHS-SMOD/GHS-POP, MODIS MOD11A2 land-surface temperature via OpenLandMap, GMTED2010, Copernicus GLO-30 DSM, CHELSA v2.1, and Yang et al. (2024) global UHII data for benchmarking against a published relief-aware inventory. The small Natural Earth 110 m coastline shapefile used for Figure 3 is redistributed as `data/coast.zip` under Natural Earth's public-domain terms.
 
 ## Reproducibility
 
-Recommended environment: Python 3.11 with numpy, pandas, statsmodels, scipy, matplotlib, geopandas, rasterio, pyproj, openpyxl, and torch for optional GPU bootstraps.
+Recommended environment: Python 3.11 with the packages in `requirements.txt`. Raw-raster checks and GPU bootstraps additionally use `requirements-optional.txt`.
 
 The five active figure generators are self-contained against the released `data/` directory and write to `figures/`:
 
@@ -75,4 +78,4 @@ See `LICENSE.txt`.
 
 ## Citation
 
-See `CITATION.cff`. After Zenodo DOI minting, cite both the accompanying paper and the dataset DOI.
+See `CITATION.cff`. Please cite both the accompanying paper and the archived release DOI: https://doi.org/10.5281/zenodo.21063993.

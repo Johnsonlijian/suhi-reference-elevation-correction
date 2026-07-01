@@ -13,6 +13,8 @@ for c in d.columns:
 d=d.dropna(subset=['original_SUHI_warm','elev100_rural50_SUHI_warm']).copy()
 d['dz']=d['rural_ref_minus_urban_elev_m']; d['terr']=d['dz'].abs()>200
 conv,corr='original_SUHI_warm','elev100_rural50_SUHI_warm'
+d=d[(d[conv].between(-15,15)) & (d[corr].between(-15,15))].copy()
+d['ranking_analysis_included']=True
 n=len(d); print(f"n={n}")
 rho_all=spearmanr(d[conv],d[corr]).correlation
 rho_terr=spearmanr(d[d.terr][conv],d[d.terr][corr]).correlation

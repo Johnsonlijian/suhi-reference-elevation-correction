@@ -8,15 +8,25 @@ Recommended: Python 3.11.
 pip install -r requirements.txt
 ```
 
+Optional raw-raster and GPU bootstrap checks additionally require:
+
+```bash
+pip install -r requirements-optional.txt
+```
+
 ## Rebuild Submission Figures From Released Derived Data
 
 The repository includes:
 
 - `data/per_city_reference_elevation_bias.csv`: released per-city correction table.
 - `data/source_data.xlsx`: figure/source-data workbook.
+- `data/fig4_slope_sensitivity.csv`: Figure 4 source table.
+- `data/fig5_gradient_summary.csv`: Figure 5 pooled-gradient source table.
+- `data/outlier_audit.csv`: audit table for the five retained extreme retrieval outliers.
 - `data/r212_chelsa_vs_modis_lapse.csv`: independent CHELSA attenuation source data for Figure 6.
+- `data/coast.zip`: Natural Earth 110 m coastline geometry redistributed under public-domain terms for Figure 3.
 
-Raw third-party datasets are not redistributed. See `DATASETS_AND_LINKS.csv`.
+Large raw third-party datasets are not redistributed. See `DATASETS_AND_LINKS.csv`.
 
 ## Quick Check From Released Data
 
@@ -81,12 +91,14 @@ python code/seb_lapse_model.py
 ## Expected Core Checks
 
 - `rebuild_figs_v2.py` reports top-100 conventional mean approximately 8.3 C, elevation-matched mean approximately 2.2 C, Spearman rho approximately 0.68, and terrain share approximately 98%.
-- The active figure scripts rebuild Figures 1--6 and the graphical abstract without in-map region labels or in-plot explanatory text.
+- The active figure scripts rebuild Figures 1--6 and the graphical abstract from released data without local machine paths or deprecated panels.
 - `r207_sensitivity.py` reports the conventional slope near +0.499 C per 100 m and elevation-matched slopes near zero.
-- `r207_uq.py` updates the derived table with correction uncertainty and trust flags.
+- `fig45.py` reads `data/fig4_slope_sensitivity.csv`, `data/r173_reference_pixel_lapse_models.csv`, and `data/fig5_gradient_summary.csv`; Figure 4 and the pooled Figure 5 annotations are therefore archived as source data rather than embedded only in plotting code.
+- `r207_uq.py` regenerates `correction_uncertainty_C` (matching-definition SD, not a full retrieval uncertainty) and trust flags in `data/per_city_reference_elevation_bias.csv`; rerun it only when rebuilding the released table from the raw/intermediate inputs.
+- `r207_sourcedata.py` rebuilds `data/source_data.xlsx` from the released CSV/source tables and adds the outlier audit sheet.
 
-Outputs from optional raw-data scripts are written under `derived/`.
+Most optional raw-data diagnostics write under `derived/`. Scripts that regenerate released artifacts (`r207_sourcedata.py` and `r207_uq.py`) intentionally update files under `data/`; compare the resulting row count, ranking-analysis inclusion flag, source-data sheet list, and checksums before replacing an archived release.
 
 ## Public/Private Boundary
 
-This repository includes code, derived data, figures, runbooks, source links, licenses, and citation metadata. It excludes raw third-party archives, active submission manuscripts, cover letters, reviewer-response drafts, private project-round outputs, logs, credentials, and private author files.
+This repository includes code, derived data, figures, runbooks, source links, licenses, citation metadata, and the small Natural Earth coastline shapefile needed to render Figure 3. It excludes large raw third-party archives, active submission manuscripts, cover letters, reviewer-response drafts, private project-round outputs, logs, credentials, and private author files.

@@ -68,7 +68,10 @@ for _, r in top_c.iterrows():
           f"bias={r['reference_elevation_bias_C']:.1f} trust={r['trust_flag']}")
 
 # ===== FIG 1: HEXBIN VERSION =====
-d_f = d[(d['conventional_SUHI_C'].between(-8, 15)) & (d['elevation_matched_SUHI_C'].between(-8, 15))].copy()
+if 'ranking_analysis_included' in d.columns:
+    d_f = d[d['ranking_analysis_included'].astype(bool)].copy()
+else:
+    d_f = d[(d['conventional_SUHI_C'].between(-15, 15)) & (d['elevation_matched_SUHI_C'].between(-15, 15))].copy()
 d_f['region'] = [region_clean(a, b) for a, b in zip(d_f['lon'], d_f['lat'])]
 top = d_f.nlargest(100, 'conventional_SUHI_C').copy()
 mc, mm = top['conventional_SUHI_C'].mean(), top['elevation_matched_SUHI_C'].mean()
@@ -115,12 +118,12 @@ ax.set_ylabel('Elevation-matched SUHI (°C)')
 ax.set_title('a   Conventional versus matched SUHI',
              loc='left', fontsize=10)
 ax.text(0.03, 0.97,
-        f'97/100 displaced after correction\n'
+        f'97/100 drop out of top 100\n'
         f'{terr_frac:.0f}% terrain-structured (vs {baseline_frac:.1f}% baseline)\n'
         f'Spearman ρ = {rho:.2f}',
         transform=ax.transAxes, va='top', fontsize=8,
         bbox=dict(boxstyle='round,pad=0.4', fc='white', ec='#d0d0d0', lw=0.8))
-ax.text(0.03, 0.03, 'Density of all 11,452 cities (log₁₀ scale)',
+ax.text(0.03, 0.03, f'Density of {len(d_f):,} analysed cities (log$_{{10}}$ scale)',
         transform=ax.transAxes, fontsize=7.2, color='#4a6fa5',
         bbox=dict(boxstyle='round,pad=0.25', fc='white', ec='none', alpha=0.80))
 for s in ('top', 'right'): ax.spines[s].set_visible(False)
@@ -142,7 +145,7 @@ ax.set_xlim(-0.25, 1.25); ax.set_xticks([0, 1])
 ax.set_xticklabels(['Conventional\nreference', 'Elevation-\nmatched'])
 ax.set_ylim(-1, 13.5)
 ax.set_ylabel('SUHI of the 100 most-intense cities (°C)')
-ax.set_title('b   Top-100 cities after correction',
+ax.set_title('b   Conventional top-100 after matching',
              loc='left', fontsize=10)
 for s in ('top', 'right'): ax.spines[s].set_visible(False)
 present = [rg for rg in order if (top['region'] == rg).any() and rg != 'Flatland & other']

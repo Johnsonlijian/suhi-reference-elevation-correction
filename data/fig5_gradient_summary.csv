@@ -1,0 +1,5 @@
+summary,coef_degC_per_km,ci_low_degC_per_km,ci_high_degC_per_km,n_windows,source_note
+pooled_all,-5.00,-5.09,-4.91,8,Spatial-block bootstrap aggregate reported in manuscript and Figure 5
+pooled_day,-5.54,NA,NA,4,Daytime pooled value reported in manuscript and Figure 5 caption
+pooled_night,-4.46,NA,NA,4,Night-time pooled value reported in manuscript and Figure 5 caption
+free_air_lapse_reference,-6.50,NA,NA,NA,Textbook constant lapse reference line

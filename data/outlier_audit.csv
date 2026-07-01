@@ -1,0 +1,6 @@
+label,threshold_flag,contamination_type,evidence_source,reviewer_note
+10804,abs_SUHI_gt_15,coastal-ocean rural contamination,manual map/rural-reference inspection,Near Lima Peru; retained in released CSV and excluded only from ranking-display/top-100 statistics
+10807,abs_SUHI_gt_15,coastal-ocean rural contamination,manual map/rural-reference inspection,Near Lima Peru; retained in released CSV and excluded only from ranking-display/top-100 statistics
+6318,abs_SUHI_gt_15,desert-emissivity anomaly,manual map/rural-reference inspection,UAE city; retained in released CSV and excluded only from ranking-display/top-100 statistics
+8441,abs_SUHI_gt_15,coastal-ocean rural contamination,manual map/rural-reference inspection,Caribbean island city; retained in released CSV and excluded only from ranking-display/top-100 statistics
+8916,abs_SUHI_gt_15,water-body rural infiltration,manual map/rural-reference inspection,Mekong Delta city; retained in released CSV and excluded only from ranking-display/top-100 statistics

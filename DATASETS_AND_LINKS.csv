@@ -3,6 +3,7 @@ GHSL GHS-SMOD and GHS-POP,European Commission Joint Research Centre,https://ghsl
 MODIS MOD11A2 LST via OpenLandMap,OpenLandMap/Zenodo,https://zenodo.org/records/6458406,See provider terms,No,Land-surface temperature inputs
 GMTED2010,USGS,https://www.usgs.gov/coastal-changes-and-impacts/gmted2010,Public-domain USGS product,No,Urban-core and reference elevation
 Copernicus GLO-30 DSM,Copernicus DEM / ESA,https://dataspace.copernicus.eu/explore-data/data-collections/copernicus-contributing-missions/collections-description/COP-DEM,See provider terms,No,Independent elevation robustness check
-Yang et al. 2024 global UHII dataset,Figshare,https://doi.org/10.6084/m9.figshare.24821538.v3,CC BY 4.0,No,External validation against published global inventory
-CHELSA v2.1 near-surface air temperature,CHELSA / Karger et al. 2017,https://doi.org/10.1038/sdata.2017.122,See provider terms,No,Independent validation of SEB attenuation (Figure 6)
+Yang et al. 2024 global UHII dataset,Figshare,https://doi.org/10.6084/m9.figshare.24821538.v3,CC BY 4.0,No,Benchmarking against a published global inventory
+CHELSA v2.1 near-surface air temperature,CHELSA / Karger et al. 2017,https://chelsa-climate.org/ and https://doi.org/10.1038/sdata.2017.122,See provider terms,No,Air-temperature lapse benchmark for SEB attenuation (Figure 6); monthly tasmax/tasmin variables from v2.1 climatology
+Natural Earth 110 m coastline,Natural Earth,https://www.naturalearthdata.com/downloads/110m-physical-vectors/110m-coastline/,Public domain,Yes,Coastline geometry for Figure 3
 Derived per-city correction table,This repository,data/per_city_reference_elevation_bias.csv,CC BY 4.0,Yes,Released derived product for reuse

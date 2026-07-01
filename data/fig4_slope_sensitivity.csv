@@ -1,0 +1,9 @@
+reference_design,slope_C_per_100m,ci_low_C_per_100m,ci_high_C_per_100m,family,cov_type,grid_size_deg,controls,filter,nobs,n_clusters,source_note
+conventional (original),0.499,0.484,0.514,conventional,spatial-cluster robust,2.5,none,pooled eight day/night seasonal windows,NA,NA,Final figure source table archived with release
+distance-only 50 km,0.361,0.341,0.382,distance-only,spatial-cluster robust,2.5,none,pooled eight day/night seasonal windows,NA,NA,Final figure source table archived with release
+distance-only 100 km,0.403,0.379,0.428,distance-only,spatial-cluster robust,2.5,none,pooled eight day/night seasonal windows,NA,NA,Final figure source table archived with release
+constant -6.5 K/km lapse,-0.151,-0.166,-0.136,constant lapse,spatial-cluster robust,2.5,none,pooled eight day/night seasonal windows,NA,NA,Final figure source table archived with release
+elevation-matched +/-100 m,-0.066,-0.080,-0.052,elevation-matched,spatial-cluster robust,2.5,none,pooled eight day/night seasonal windows,NA,NA,Final figure source table archived with release
+elevation-matched +/-200 m,-0.049,-0.065,-0.033,elevation-matched,spatial-cluster robust,2.5,none,pooled eight day/night seasonal windows,NA,NA,Final figure source table archived with release
+elevation-matched +/-500 m,0.025,0.007,0.042,elevation-matched,spatial-cluster robust,2.5,none,pooled eight day/night seasonal windows,NA,NA,Final figure source table archived with release
+elevation-matched closest-quartile,-0.018,-0.037,0.001,elevation-matched,spatial-cluster robust,2.5,none,pooled eight day/night seasonal windows,NA,NA,Final figure source table archived with release

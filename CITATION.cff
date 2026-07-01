@@ -16,5 +16,7 @@ keywords:
   - elevation bias
   - land surface temperature
   - MODIS
-version: "1.0.4"
-date-released: "2026-06-30"
+version: "1.0.5"
+date-released: "2026-07-01"
+doi: "10.5281/zenodo.21063992"
+url: "https://github.com/Johnsonlijian/suhi-reference-elevation-correction/releases/tag/v1.0.5"

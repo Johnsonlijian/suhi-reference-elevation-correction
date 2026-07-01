@@ -21,8 +21,12 @@ def report(d,tag):
     d['dm']=(pd.qcut(d[corr],10,labels=False)-pd.qcut(d[conv],10,labels=False)).abs()
     out.append(f"   move >=1 decile {(d['dm']>=1).mean()*100:.1f}% ; >=2 {(d['dm']>=2).mean()*100:.1f}%")
     return "\n".join(out)
-print(report(a,"unfiltered (has data-QA outliers)"))
-# QA filter: reliable elevation-matched reference + physically plausible conventional SUHI
-q=a[(a['elev100_rural50_n']>=30)&(a['original_SUHI_warm'].between(-10,15))&(a['elev100_rural50_SUHI_warm'].between(-10,15))]
-print(report(q,"QA-filtered (matched n>=30, |SUHI|<15C)"))
-print(f"\nQA removed {len(a)-len(q)} cities ({(len(a)-len(q))/len(a)*100:.1f}%).")
+print(report(a,"unfiltered (has retained retrieval outliers)"))
+# Manuscript ranking-analysis filter: five extreme retrieval outliers are retained
+# in the released table but excluded from ranking statistics.
+ranking=a[(a[conv].between(-15,15))&(a[corr].between(-15,15))]
+print(report(ranking,"ranking-analysis population (|SUHI|<=15C)"))
+print(f"\nRanking filter removed {len(a)-len(ranking)} cities ({(len(a)-len(ranking))/len(a)*100:.2f}%).")
+# Stricter diagnostic only; not the manuscript ranking population.
+q=ranking[ranking['elev100_rural50_n']>=30]
+print(report(q,"strict matched-pixel diagnostic (ranking filter plus matched n>=30)"))

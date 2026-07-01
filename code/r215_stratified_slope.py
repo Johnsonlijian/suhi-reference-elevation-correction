@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-R215  Is the reference-elevation bias driven by one region/climate, or universal?
+R215  Is the reference-elevation bias driven by one region/climate, or positive across tested strata?
 Stratified slope of conventional SUHI on reference-elevation surplus (per 100 m),
 within each Koppen broad zone and across elevation/latitude bands, with HC3
 heteroskedasticity-robust 95% CIs. Tests the obvious referee concern that the

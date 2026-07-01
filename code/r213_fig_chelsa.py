@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""R213  Figure 6: independent CHELSA cross-validation of surface-attenuation f."""
+"""R213  Figure 6: independent CHELSA lapse benchmark for surface-attenuation f."""
 import os, numpy as np, pandas as pd, matplotlib as mpl
 mpl.use('Agg'); import matplotlib.pyplot as plt
 _REPO=os.path.join(os.path.dirname(__file__),'..')
