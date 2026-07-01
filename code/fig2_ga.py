@@ -87,12 +87,20 @@ def build_figure2():
     ax.scatter([zU], [LU], color=URBAN, s=70, zorder=5, ec="k", lw=0.5)
     ax.text(zU, LU + 0.5, "urban U", color=URBAN, ha="center", fontsize=8.4)
     ax.scatter([zR], [LR], color=RURAL, s=70, zorder=5, ec="k", lw=0.5)
-    ax.text(zR + 0.04, LR - 0.2, "rural ref R\n(conventional)", color=RURAL, ha="left", fontsize=7.8)
+    ax.text(
+        zR + 0.20,
+        LR - 0.35,
+        "rural ref R\n(conventional)",
+        color=RURAL,
+        ha="left",
+        fontsize=7.4,
+        bbox=dict(facecolor="white", edgecolor="none", alpha=0.72, pad=0.2),
+    )
     ax.scatter([zU], [LRm], color=MATCH, s=80, marker="s", zorder=5, ec="k", lw=0.5)
     ax.add_patch(FancyArrowPatch((zR, LR), (zU + 0.02, LRm), connectionstyle="arc3,rad=0.25", arrowstyle="->", color=MATCH, lw=1.8, zorder=4))
     ax.text(0.5, 28.0, "match reference\nto urban elevation", color=MATCH, fontsize=9.5, ha="center")
-    ax.annotate("", xy=(zR + 0.06, LR), xytext=(zR + 0.06, LU), arrowprops=dict(arrowstyle="<->", color=URBAN, lw=1.4))
-    ax.text(zR + 0.10, (LR + LU) / 2, "S = U - R\n(inflated)", color=URBAN, va="center", fontsize=7.8)
+    ax.annotate("", xy=(zR + 0.08, LR), xytext=(zR + 0.08, LU), arrowprops=dict(arrowstyle="<->", color=URBAN, lw=1.4))
+    ax.text(zR + 0.20, (LR + LU) / 2, "S = U - R\n(inflated)", color=URBAN, va="center", fontsize=7.6)
     ax.annotate("", xy=(zU - 0.07, LRm), xytext=(zU - 0.07, LU), arrowprops=dict(arrowstyle="<->", color=MATCH, lw=1.4))
     ax.text(zU - 0.12, (LRm + LU) / 2, "S' near 0", color=MATCH, va="center", ha="right", fontsize=7.8)
     for zz, LL in ((zU, LU), (zR, LR)):
@@ -162,16 +170,16 @@ def build_graphical_abstract():
     ax = fig.add_subplot(gs[0, 1])
     ax.axis("off")
     ax.text(0.0, 0.90, "Of the conventional-reference top 100:", fontsize=13, fontweight="bold", transform=ax.transAxes)
-    for i, (big, small) in enumerate(
+    for i, (big, small, big_size, small_x) in enumerate(
         [
-            ("97 / 100", "drop out of the top 100 after correction"),
-            ("98 %", "are high-terrain cities (vs 20.4% baseline)"),
-            ("rho = 0.68", "conventional vs elevation-matched ranking"),
+            ("97 / 100", "drop out of the top 100 after correction", 24, 0.34),
+            ("98 %", "are high-terrain cities (vs 20.4% baseline)", 24, 0.34),
+            ("rho = 0.68", "conventional vs elevation-matched ranking", 21, 0.52),
         ]
     ):
         yy = 0.74 - i * 0.20
-        ax.text(0.02, yy, big, fontsize=24, fontweight="bold", color="#C0392B", transform=ax.transAxes)
-        ax.text(0.34, yy + 0.03, small, fontsize=11.5, va="center", transform=ax.transAxes)
+        ax.text(0.02, yy, big, fontsize=big_size, fontweight="bold", color="#C0392B", transform=ax.transAxes)
+        ax.text(small_x, yy + 0.03, small, fontsize=11.5, va="center", transform=ax.transAxes)
     ax.text(
         0.0,
         0.07,

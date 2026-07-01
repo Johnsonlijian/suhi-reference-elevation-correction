@@ -23,7 +23,8 @@ for m,c,l in [(isday,'#E07B00','Skin lapse, day  (MODIS)'),(~isday,'#2563EB','Sk
     axL.errorbar(x[m], d['skin_lapse'][m], yerr=[(d['skin_lapse']-d['skin_lo'])[m], (d['skin_hi']-d['skin_lapse'])[m]],
                  fmt='o', ms=7, color=c, capsize=3, lw=1.2, label=l, zorder=4)
 axL.axhline(-6.5, color='#999', ls=':', lw=1.0, zorder=1)
-axL.text(7.35,-6.46,'textbook $-6.5$',fontsize=7,color='#777',ha='right',va='bottom')
+axL.text(7.35,-6.35,'constant -6.5',fontsize=7,color='#777',ha='right',va='bottom',
+         bbox=dict(facecolor='white', edgecolor='none', alpha=0.85, pad=0.15))
 axL.axvline(3.5,color='#ccc',lw=0.8)
 axL.set_xticks(x); axL.set_xticklabels(lab,fontsize=7.5)
 axL.set_ylabel('LST / air-T elevation lapse  (°C km$^{-1}$)',fontsize=9)

@@ -101,7 +101,7 @@ def figure5():
     free_air = summary[summary["summary"].eq("free_air_lapse_reference")].iloc[0]
 
     seasons = ["jan", "apr", "jul", "oct"]
-    fig, ax = plt.subplots(figsize=(7.6, 4.2))
+    fig, ax = plt.subplots(figsize=(7.8, 4.4))
     ax.axhline(free_air.coef_degC_per_km, color="#b0b0b0", ls=":", lw=1.4, zorder=1)
     ax.text(
         7.1,
@@ -165,10 +165,11 @@ def figure5():
         ha="center",
         fontsize=8.5,
     )
-    ax.set_ylabel("Rural-pixel surface LST-elevation gradient (deg C km^-1)")
+    ax.set_ylabel("Surface LST-elevation gradient (deg C/km)", labelpad=8)
     ax.set_title("Rural LST-elevation gradients", loc="left", fontsize=9.2)
     ax.set_ylim(-7.0, -3.4)
     ax.set_xlim(-0.6, 9.0)
+    fig.subplots_adjust(left=0.16, right=0.98, bottom=0.18, top=0.88)
     ax.legend(
         handles=[
             Line2D([0], [0], marker="o", color="w", markerfacecolor="#E07A1F", label="daytime", markersize=7),
